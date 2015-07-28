@@ -1,3 +1,5 @@
 # phalcon-mailgun
 
-description coming, basic web application for mailgun.com api.
+description coming soon... 
+
+Basic web application for mailgun.com api.
