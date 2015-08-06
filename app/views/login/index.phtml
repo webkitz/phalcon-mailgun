@@ -16,7 +16,6 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                                <!-- <form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">!-->
                                 <?php echo $this->tag->form(array("login/check", "autocomplete" => "off","id"=>"login-form" , "style" => "display:block")) ?>
                                 <div class="form-group">
                                     <input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" required autofocus value="">
@@ -41,14 +40,13 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="text-center">
-                                                <a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                <a href="/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <?php echo $this->tag->form(array("login/register", "autocomplete" => "off","id"=>"register-form", "style" => "display:none")) ?>
-                            <!--<form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;"> !-->
                                 <div class="form-group">
                                     <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
                                 </div>
