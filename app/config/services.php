@@ -73,3 +73,13 @@ $di->setShared('session', function () {
 
     return $session;
 });
+/**
+ * Setup flash messages for alerts
+ */
+$di->set('flash', function() {
+    return new \Phalcon\Flash\Session(array(
+        'error' => 'alert alert-danger',
+        'success' => 'alert alert-success',
+        'notice' => 'alert alert-warning',
+    ));
+}, true);

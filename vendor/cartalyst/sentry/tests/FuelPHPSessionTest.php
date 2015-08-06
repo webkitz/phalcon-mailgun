@@ -31,7 +31,7 @@ class FuelPHPSessionTest extends PHPUnit_Framework_TestCase {
 	 */
 	public static function setUpBeforeClass()
 	{
-		require_once __DIR__.'/stubs/fuelphp/Fuel/Core/Session_Driver.php';
+		require_once __DIR__ . '/stubs/fuelphp/Fuel/Core/Session_Driver.php';
 	}
 
 	/**

@@ -33,7 +33,7 @@ class EloquentGroupProviderTest extends PHPUnit_Framework_TestCase {
 	 */
 	public static function setUpBeforeClass()
 	{
-		require_once __DIR__.'/stubs/groups/GroupModelStubs.php';
+		require_once __DIR__ . '/stubs/groups/GroupModelStubs.php';
 	}
 
 	/**

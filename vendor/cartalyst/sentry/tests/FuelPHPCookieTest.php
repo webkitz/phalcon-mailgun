@@ -19,11 +19,13 @@
  */
 
 use Mockery as m;
-use Cartalyst\Sentry\Cookies\CICookie;
-use CI_Input;
+use Cartalyst\Sentry\Cookies\FuelPHPCookie;
 use PHPUnit_Framework_TestCase;
 
-class CICookieTest extends PHPUnit_Framework_TestCase {
+/**
+ * @runTestsInSeparateProcesses
+ */
+class FuelPHPCookieTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Setup resources and dependencies.
@@ -32,7 +34,7 @@ class CICookieTest extends PHPUnit_Framework_TestCase {
 	 */
 	public static function setUpBeforeClass()
 	{
-		require_once __DIR__.'/stubs/ci/CI_Input.php';
+		require_once __DIR__ . '/stubs/fuelphp/Cookie.php';
 	}
 
 	/**
@@ -47,30 +49,26 @@ class CICookieTest extends PHPUnit_Framework_TestCase {
 
 	public function testOverridingKey()
 	{
-		$cookie = new CICookie(new CI_Input, array(), 'bar');
+		$cookie = new FuelPHPCookie('bar');
 		$this->assertEquals('bar', $cookie->getKey());
 	}
 
 	public function testPut()
 	{
-		$cookie = new CICookie($input = m::mock('CI_Input'), array(), 'foo');
-
-		$input->shouldReceive('set_cookie')->with(array(
-			'name'   => 'foo',
-			'value'  => serialize('bar'),
-			'expire' => 120,
-			'domain' => '',
-			'path'   => '/',
-			'prefix' => '',
-			'secure' => false,
-		));
-
+		$cookie = new FuelPHPCookie('foo');
 		$cookie->put('bar', 120);
+
+		$this->assertTrue(isset($_SERVER['__cookie.set']));
+		$result = $_SERVER['__cookie.set'];
+		$this->assertEquals('foo', $result[0]);
+		$this->assertEquals(serialize('bar'), $result[1]);
+		$this->assertEquals(120, $result[2]);
+		unset($_SERVER['__cookie.set']);
 	}
 
 	public function testForever()
 	{
-		$cookie = m::mock('Cartalyst\Sentry\Cookies\CICookie[put]', array(new CI_Input()));
+		$cookie = m::mock('Cartalyst\Sentry\Cookies\FuelPHPCookie[put]');
 
 		$me = $this;
 		$cookie->shouldReceive('put')->with('bar', m::on(function($value) use ($me)
@@ -92,24 +90,17 @@ class CICookieTest extends PHPUnit_Framework_TestCase {
 
 	public function testGet()
 	{
-		$cookie = new CICookie($input = m::mock('CI_Input'), array(), 'foo');
-
-		$input->shouldReceive('cookie')->with('foo')->once()->andReturn(serialize('baz'));
-
+		$cookie = new FuelPHPCookie('foo');
 		$this->assertEquals('baz', $cookie->get());
 	}
 
 	public function testForget()
 	{
-		$cookie = new CICookie($input = m::mock('CI_Input'), array(), 'foo');
-
-		$input->shouldReceive('set_cookie')->with(array(
-			'name'   => 'foo',
-			'value'  => '',
-			'expiry' => '',
-		))->once();
-
+		$cookie = new FuelPHPCookie('foo');
+		$this->assertFalse(isset($_SERVER['__cookie.delete']));
 		$cookie->forget();
+		$this->assertTrue($_SERVER['__cookie.delete']);
+		unset($_SERVER['__cookie.delete']);
 	}
 
 }

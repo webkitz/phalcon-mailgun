@@ -34,7 +34,7 @@ class EloquentUserProviderTest extends PHPUnit_Framework_TestCase {
 	 */
 	public static function setUpBeforeClass()
 	{
-		require_once __DIR__.'/stubs/users/UserModelStubs.php';
+		require_once __DIR__ . '/stubs/users/UserModelStubs.php';
 	}
 
 	/**

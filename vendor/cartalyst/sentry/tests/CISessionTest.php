@@ -31,7 +31,7 @@ class CISessionTest extends PHPUnit_Framework_TestCase {
 	 */
 	public static function setUpBeforeClass()
 	{
-		require_once __DIR__.'/stubs/ci/CI_Session.php';
+		require_once __DIR__ . '/stubs/ci/CI_Session.php';
 	}
 
 	/**

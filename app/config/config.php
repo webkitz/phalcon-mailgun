@@ -4,9 +4,9 @@ return new \Phalcon\Config(array(
     'database' => array(
         'adapter'     => 'Mysql',
         'host'        => 'localhost',
-        'username'    => 'mailgunapp',
-        'password'    => 'mailgunapp',
-        'dbname'      => 'mailgunapp',
+        'username'    => 'mailgun',
+        'password'    => 'mailgun',
+        'dbname'      => 'mailgun',
         'charset'     => 'utf8',
     ),
     'application' => array(
@@ -17,7 +17,7 @@ return new \Phalcon\Config(array(
         'pluginsDir'     => __DIR__ . '/../../app/plugins/',
         'libraryDir'     => __DIR__ . '/../../app/library/',
         'cacheDir'       => __DIR__ . '/../../app/cache/',
-        'vendor'         => __DIR__ . '/../../app/vendor/',
+        'vendor'         => __DIR__ . '/../../vendor/',
 
         'baseUri'        => '/',
     )
