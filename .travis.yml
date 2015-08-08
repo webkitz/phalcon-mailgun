@@ -4,7 +4,7 @@ php:
   - 5.4
   - 5.5
 
-sudo: false
+sudo: true
 
 env:
   - PHALCON_VERSION="phalcon-v2.0.0"
