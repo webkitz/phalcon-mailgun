@@ -1,21 +1,58 @@
 /**
  * Created by Luke Hardiman on 4/08/2015.
  */
-$(function() {
+//global scopes
+window.register_form = null , window.login_form = null;
 
-    $('#login-form-link').click(function(e) {
+$(function() {
+    /**
+     * Bind our button click events
+     */
+    $('#login-form-link').click(function(element){
+        login_form();
+        $(".alert-error").remove()
+        element.preventDefault();
+    });
+    $('#register-form-link').click(function(element){
+        register_form();
+        $(".alert-error").remove()
+        element.preventDefault();
+    });
+
+
+    /**
+     * @description window event for login form button or changing login tab
+     * @param element
+     */
+    window.login_form = function(element){
         $("#login-form").delay(100).fadeIn(100);
         $("#register-form").fadeOut(100);
         $('#register-form-link').removeClass('active');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
-    $('#register-form-link').click(function(e) {
+        $("#login-form-link").addClass('active');
+    }
+
+    /**
+     * @description window event for register form button or changing register tab
+     * @param element
+     */
+    window.register_form = function(element){
         $("#register-form").delay(100).fadeIn(100);
         $("#login-form").fadeOut(100);
         $('#login-form-link').removeClass('active');
-        $(this).addClass('active');
-        e.preventDefault();
-    });
+        $('#register-form-link').addClass('active');
 
+    }
+
+
+    //swap between tab views and call function of tab delegated
+    if (typeof login_tab == "string" && login_tab.length > 4){
+        $("#"+login_tab).addClass("active").css('display','block');
+        //declare the function we want to call
+        var func = window[login_tab];
+        if(typeof func === 'function') {
+            func();
+        }
+    }
+
+    console.log("login.js loaded")
 });
