@@ -3,16 +3,13 @@ language: php
 sudo: true
 
 php:
-  - 5.3
-  - 5.4
+  - 5.5
 
 cache:
     - apt
 
 services:
-  - mongodb
   - memcached
-  - redis-server
 
 before_install:
  - composer --prefer-source install
