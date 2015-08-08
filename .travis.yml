@@ -22,5 +22,5 @@ before_script:
   - travis_retry composer update --prefer-source --no-interaction --prefer-stable
 
 script:
-  - chmod a+x ./unit-tests/phpunit.xml
-  - phpunit -c ./unit-tests/phpunit.xml
+  - chmod a+x /home/travis/build/webkitz/phalcon-mailgun/unit-tests/phpunit.xml
+  - phpunit -c /home/travis/build/webkitz/phalcon-mailgun/unit-tests/phpunit.xml
