@@ -1,5 +1,9 @@
-# phalcon-mailgun
+[![Travis](https://travis-ci.org/webkitz/phalcon-mailgun.svg)](https://travis-ci.org/webkitz/phalcon-mailgun)
+##phalcon-mailgun
 
-don't install currently just started...
+-Not installable yet, just started...
 
-description coming soon... 
+###description
+Web Application for MailGun ... (more to come)
+
+###installation
