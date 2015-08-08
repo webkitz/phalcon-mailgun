@@ -11,12 +11,12 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="true"
-         bootstrap="./public/index.php"
+         bootstrap="../public/index.php"
         >
 
     <testsuites>
         <testsuite name="Unit tests">
-            <directory>./tests/</directory>
+            <directory>./</directory>
         </testsuite>
     </testsuites>
 
