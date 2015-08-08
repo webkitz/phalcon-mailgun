@@ -7,7 +7,7 @@ use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
-
+use Phalcon\Mvc\Router;
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
@@ -85,3 +85,19 @@ $di->set('flash', function() {
         'notice' => 'alert alert-warning',
     ));
 }, true);
+
+/**
+ * add routing capabilities
+
+$di->set('router', function () {
+    $router = new Router();
+    $router->add(
+        "/api",
+        array(
+            "controller" => "Api"
+            //"action"     => "profile",
+        )
+    );
+    return $router;
+});
+ */
