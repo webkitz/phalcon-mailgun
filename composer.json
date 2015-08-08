@@ -1,0 +1,9 @@
+{
+    "name": "webkitz/phalcon-mailgun",
+    "description": "",
+    "keywords": ["mailgun"],
+     "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "license": "MIT"
+}

@@ -15,6 +15,8 @@ services:
   - redis-server
 
 before_install:
+ - composer --prefer-source install
+ - composer require phalcon/zephir:dev-master
  - ./unit-tests/ci/install_prereqs.sh
  - ./unit-tests/ci/setup_dbs.sh
 
