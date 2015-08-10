@@ -57,6 +57,9 @@ $di->set('db', function () use ($config) {
     return new DbAdapter($config->toArray());
 });
 
+$di->set('mailgun', function () use ($config) {
+    return $config->mailgun;
+});
 /**
  * If the configuration specify the use of metadata adapter use it or use memory otherwise
  */

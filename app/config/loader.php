@@ -7,7 +7,6 @@ $loader = new \Phalcon\Loader();
 $loader->registerNamespaces(
     array(
         "Api\Response"    => $config->application->libraryDir,
-
     )
 );
 
@@ -21,7 +20,7 @@ $loader->registerDirs(
 
 //Sentry module is located from https://cartalyst.com/manual/sentry/2.1
 
-//register sentry namespace
+//register autoloader namespace
 require_once($config->application->vendor.'autoload.php');
 
 // Create a new Database connection

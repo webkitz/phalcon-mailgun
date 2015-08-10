@@ -20,6 +20,9 @@ return new \Phalcon\Config(array(
         'vendor'         => __DIR__ . '/../../vendor/',
 
         'baseUri'        => '/',
+    ),
+    'mailgun' => array(
+        'api_key' => 'YOUR_API_KEY',
     )
 ));
 
