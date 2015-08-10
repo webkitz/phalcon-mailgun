@@ -2,5 +2,9 @@
     "name": "webkitz/phalcon-mailgun",
     "description": "",
     "keywords": ["mailgun"],
-    "license": "MIT"
+    "license": "MIT",
+    "require": {
+        "mailgun/mailgun-php": "1.7.*"
+    },
+    "minimum-stability": "stable"
 }
