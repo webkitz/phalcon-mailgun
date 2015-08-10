@@ -18,7 +18,12 @@ before_script:
   - cd ../..
 
   # run the composer update
+before_install:
+  - travis_retry composer self-update
 
+install:
+  - travis_retry composer install
 
 script:
+  - (ls -la)
   - (cd unit-tests; phpunit --debug)
