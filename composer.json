@@ -5,9 +5,16 @@
     "license": "MIT",
     "require": {
         "php": ">= 5.3.0",
-        "mailgun/mailgun-php": "1.7.*",
+        "mailgun/mailgun-php": "~1.7.2",
         "illuminate/database" : "4.*",
         "cartalyst/sentry" : "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "" : [
+                "public/"
+            ]
+        }
     },
     "minimum-stability": "stable"
 }
