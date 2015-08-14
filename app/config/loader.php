@@ -6,10 +6,10 @@ $loader = new \Phalcon\Loader();
  */
 $loader->registerNamespaces(
     array(
-        "Api\Response"    => $config->application->libraryDir,
+        "Phalcon"           => $config->application->incubator,
+        "Api\Response"      => $config->application->libraryDir
     )
 );
-
 $loader->registerDirs(
     array(
         $config->application->controllersDir,

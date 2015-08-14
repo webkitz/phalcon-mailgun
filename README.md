@@ -2,6 +2,8 @@
 ##phalcon-mailgun
 
 -Not installable yet, just started...
+-install option 1 
+composer create-project webkitz/phalcon-mailgun --stability="dev"
 
 ###description
 Web Application for MailGun ... (more to come)

@@ -16,6 +16,7 @@ return new \Phalcon\Config(array(
         'viewsDir'       => __DIR__ . '/../../app/views/',
         'pluginsDir'     => __DIR__ . '/../../app/plugins/',
         'libraryDir'     => __DIR__ . '/../../app/library/',
+        'incubator'      => __DIR__ . '/../../app/library/incubator/',
         'cacheDir'       => __DIR__ . '/../../app/cache/',
         'vendor'         => __DIR__ . '/../../vendor/',
 
@@ -23,6 +24,7 @@ return new \Phalcon\Config(array(
     ),
     'mailgun' => array(
         'api_key' => 'YOUR_API_KEY',
+        'api_domain' => 'YOUR_API_DOMAIN'
     )
 ));
 
