@@ -1,16 +1,22 @@
 <?php
 use Phalcon\Mvc\Controller;
-use Mailgun\Mailgun;
+use Mailgun\Mailgun as MailGun;
 
 use Phalcon\Http\Client\Request;
 
+/**
+ * Class ApiController
+ * @description handles calls to our front end and to mailgun with memcache for caching calls
+ */
 
 class ApiController extends Controller
 {
     //holder for our api libary
     private $_api = null;
 
-    private $cache = null;      //memcache
+    private $_cache = null;      //memcache
+
+    private $_mailGun = null;    //mailgun
 
     //constructor
     public function onConstruct(){
@@ -23,7 +29,7 @@ class ApiController extends Controller
             "lifetime" => 300
         ));
         //Create the Cache setting memcached connection options
-        $this->cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
+        $this->_cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
             'host' => 'localhost',
             'port' => 11211,
             'persistent' => false
@@ -35,13 +41,16 @@ class ApiController extends Controller
      */
     public function indexAction()
     {
-        $this->Api()->response("Invalid Call",false);
+        $this->Api()->response("Incorrect API call",false);
     }
 
     /**
-     * GET api/getList
+     * GET api/getLists
+     * @returns json list of mailinglists
      */
-    public function getListAction(){
+    public function getListsAction(){
+    //GET /lists
+        $this->Api()->response($this->getCall('lists'));
 
     }
 
@@ -64,7 +73,7 @@ class ApiController extends Controller
      * @param $data to be stored
      */
    private function setCache($cacheKey,$data){
-       $this->cache->save($cacheKey, $data);
+       $this->_cache->save($cacheKey, $data);
    }
 
     /**
@@ -72,6 +81,33 @@ class ApiController extends Controller
      * @return mixed | bool false if no data from key
      */
     private function getCache($cacheKey){
-        return $this->cache->get($cacheKey);
+        return $this->_cache->get($cacheKey);
+    }
+
+    /**
+     * @description handles calls between memcache and mailgun for any GET calls
+     * @param $call
+     * @return bool|mixed|stdClass
+     */
+    private function getCall($call){
+        //check if we have this call cached
+      if  ($response = $this->getCache($call))
+          return $response;
+
+        //not in cache lets call mailGun
+        $response = $this->mailGun()->get($call);
+        $this->setCache($call,$response);
+
+        return $response;
+    }
+
+    /**
+     * @return Mailgun\Mailgun singleton of mailGun vendor
+     */
+    private function mailGun(){
+        if($this->_mailGun == null)
+            $this->_mailGun = new MailGun($this->mailgun->api_key);
+
+        return $this->_mailGun;
     }
 }

@@ -16,8 +16,8 @@ class IndexController extends ControllerBase
      */
     public function indexAction()
     {
-
-
+        //add our javaScript file
+        $this->assets->addJs('js/index.js');
     }
 
 
