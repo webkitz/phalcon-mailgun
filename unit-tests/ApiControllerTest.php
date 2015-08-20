@@ -64,7 +64,7 @@ class ApiControllerTest extends \PHPUnit_Framework_TestCase
         //$this->controller->api = new MockApi();
         $this->controller->indexAction();
         //check api call response
-        $this->expectOutputString('{"success":true,"data":"Incorrect API call"}');
+        $this->expectOutputString('{"success":false,"data":"Incorrect API call"}');
 
     }
 }
