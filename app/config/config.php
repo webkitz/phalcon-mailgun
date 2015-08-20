@@ -19,12 +19,17 @@ return new \Phalcon\Config(array(
         'incubator'      => __DIR__ . '/../../app/library/incubator/',
         'cacheDir'       => __DIR__ . '/../../app/cache/',
         'vendor'         => __DIR__ . '/../../vendor/',
-
         'baseUri'        => '/',
     ),
     'mailgun' => array(
         'api_key' => 'YOUR_API_KEY',
         'api_domain' => 'YOUR_API_DOMAIN'
-    )
+    ),
+    //you can find settings in https://mailgun.com/app/domains or define custom settings
+    'smtp' => array(
+        'hostname' => 'SMTP_HOSTNAME',
+        'username' => 'SMTP_USERNAME',
+        'password' => 'SMTP_PASSWORD'
+    ),
 ));
 

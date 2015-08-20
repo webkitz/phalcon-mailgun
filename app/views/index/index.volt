@@ -14,9 +14,8 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">View Lists</a></li>
-                    <li><a href="#">Send Mail</a></li>
-
+                    <li><a id="viewLists" href="#">View Lists</a></li>
+                    <li><a id="sendMail" href="#">Send Mail</a></li>
                 </ul>
 
             </div><!--/.nav-collapse -->
