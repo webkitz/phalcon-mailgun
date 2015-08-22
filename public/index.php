@@ -26,7 +26,7 @@ try {
     $application = new \Phalcon\Mvc\Application($di);
 
 
-    echo $application->handle()->getContent();
+    $application->handle()->getContent();
 
 } catch (\Exception $e) {
     echo $e->getMessage();

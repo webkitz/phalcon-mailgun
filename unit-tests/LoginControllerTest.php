@@ -42,6 +42,7 @@ class LoginControllerTest extends \PHPUnit_Framework_TestCase
         $this->controller = new LoginController();
 
         $this->view = new View();
+        $this->view->disable();
         $this->di = DI::getDefault();
 		parent::setUp();
 	}
@@ -57,23 +58,31 @@ class LoginControllerTest extends \PHPUnit_Framework_TestCase
      *  Test errorCheck on loginController
      */
 	public function test_ErrorCheck(){
-        $method = new ReflectionMethod(
-            'LoginController', 'errorCheck'
-        );
+
+
+        $LoginController = new LoginController();
+        $class = new ReflectionClass ($LoginController);
+
+        $method = $class->getMethod ('errorCheck');
         //we are testing a private method so make it accessible
         $method->setAccessible(TRUE);
 
-        $errors = $method->invoke(new LoginController);
-        //should return false
+        //should return false no errors to check against
+        $output_false = $method->invoke($LoginController);
         $this->assertEquals(false,
-            $errors
+            $output_false
         );
 
-        //
-        $errors = $method->invoke(new LoginController,array("error message 1","error message 2"));
-        $this->assertEquals(false,
-            $errors
+        //we need to capture this output as it forces a redirect
+        ob_start();
+        $method->invoke($LoginController,array("Failed login"));   //invoke
+        $output_redirect = ob_get_flush();  //capture and clear buffer
+
+        //check we were redirect to the login-form which is a post
+        $this->assertContains('id="login-form"',
+            $output_redirect
         );
+
     }
 
 

@@ -26,5 +26,6 @@ install:
   - travis_retry composer install
 
 script:
+  - (mkdir app/cache; chmod 777 app/cache)  #app cache for volt
   - (ls -la)
   - (cd unit-tests; phpunit --debug)
