@@ -7,11 +7,13 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="icon" href="data:;base64,iVBORw0KGgo=">
         {{ assets.outputCss() }}
+
     </head>
     <body>
         {{ content() }}
         <!--scripts !-->
         {{ javascript_include("js/jquery-1.9.1.min.js") }}
         {{ assets.outputJs() }}
+
     </body>
 </html>

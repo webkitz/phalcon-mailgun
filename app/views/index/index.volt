@@ -21,6 +21,16 @@
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
+    <table id="mailingLists" class="display" cellspacing="0" width="100%" >
+        <thead>
+        <tr>
+            <th width="10%">Name</th>
+            <th width="30%">Description</th>
+            <th>Mail Address</th>
+            <th>Subscribers</th>
+        </tr>
+        </thead>
 
+    </table>
 
 </div> <!-- /container -->
