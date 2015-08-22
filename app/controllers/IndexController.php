@@ -4,10 +4,11 @@
 
 class IndexController extends ControllerBase
 {
+
     /**
-     * @description __construct
+     * @description initialize
      */
-    public function onConstruct()
+    public function initialize()
     {
         $this->loginCheck();
     }
@@ -16,6 +17,7 @@ class IndexController extends ControllerBase
      */
     public function indexAction()
     {
+
         //add our javaScript file
         $this->assets->addJs('js/index.js');
     }

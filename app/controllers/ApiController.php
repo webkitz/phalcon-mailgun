@@ -1,7 +1,7 @@
 <?php
 use Phalcon\Mvc\Controller;
 use Mailgun\Mailgun as MailGun;
-
+use Phalcon\Mvc\View;
 use Phalcon\Http\Client\Request;
 
 /**
@@ -9,7 +9,7 @@ use Phalcon\Http\Client\Request;
  * @description handles calls to our front end and to mailgun with memcache for caching calls
  */
 
-class ApiController extends Controller
+class ApiController extends ControllerBase
 {
     //holder for our api libary
     private $_api = null;
@@ -18,10 +18,12 @@ class ApiController extends Controller
 
     private $_mailGun = null;    //mailgun
 
+    //override
+    public function initialize(){}
+
     //constructor
     public function onConstruct(){
         //disable view as were not rendering
-        $this->view->disable();
 
         //setup our memcache
         //@todo add setting in config
@@ -41,7 +43,8 @@ class ApiController extends Controller
      */
     public function indexAction()
     {
-        $this->Api()->response("Incorrect API call",false);
+
+        return $this->Api()->response("Incorrect API call",false);
     }
 
     /**
@@ -49,8 +52,10 @@ class ApiController extends Controller
      * @returns json list of mailinglists
      */
     public function getListsAction(){
-    //GET /lists
-        $this->Api()->response($this->getCall('lists'));
+
+
+        //GET /lists
+        return $this->Api()->response($this->getCall('lists'));
 
     }
 

@@ -6,8 +6,7 @@ use Phalcon\Mvc\Controller;
 
 class ControllerBase extends Controller
 {
-    //constructor or onConstruct can be used
-    public function initialize(){}
+
 
     /**
      * @description check user is logged in otherwise redirect to /LoginController

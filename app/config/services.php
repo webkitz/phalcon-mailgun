@@ -88,19 +88,3 @@ $di->set('flash', function() {
         'notice' => 'alert alert-warning',
     ));
 }, true);
-
-/**
- * add routing capabilities
-
-$di->set('router', function () {
-    $router = new Router();
-    $router->add(
-        "/api",
-        array(
-            "controller" => "Api"
-            //"action"     => "profile",
-        )
-    );
-    return $router;
-});
- */
