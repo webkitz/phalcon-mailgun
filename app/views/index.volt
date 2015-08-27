@@ -10,10 +10,11 @@
 
     </head>
     <body>
+
         {{ content() }}
         <!--scripts !-->
         {{ javascript_include("js/jquery-1.9.1.min.js") }}
         {{ assets.outputJs() }}
-
+        <h5>Ignore the design & layout just a quick bootstrap will be prettyfied later</h5>
     </body>
 </html>
