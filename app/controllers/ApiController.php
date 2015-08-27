@@ -28,7 +28,7 @@ class ApiController extends ControllerBase
         //setup our memcache
         //@todo add setting in config
         $frontCache = new \Phalcon\Cache\Frontend\Data(array(
-            "lifetime" => 300
+            "lifetime" => 1000  //while testing increased cache
         ));
         //Create the Cache setting memcached connection options
         $this->_cache = new \Phalcon\Cache\Backend\Memcache($frontCache, array(
@@ -53,12 +53,25 @@ class ApiController extends ControllerBase
      */
     public function getListsAction(){
 
-
         //GET /lists
         return $this->Api()->response($this->getCall('lists'));
 
     }
 
+    /**
+     * @param $address mailing list subscription
+     */
+    //@todo verifify address from cache/from getlistAction
+    public function getMembersAction(){
+        //GET /lists/<address>/members/
+        //get address
+        $address = $this->request->get("address",null,false);
+
+        if (!$address)
+            return $this->Api()->response("mailing list address missing",false);
+
+        return $this->Api()->response($this->getCall("lists/$address/members"));
+    }
     /**
      * @return \Api\Response\Api|Api Singleton
      */
@@ -94,7 +107,9 @@ class ApiController extends ControllerBase
      * @param $call
      * @return bool|mixed|stdClass
      */
+    //@todo allow prams to be sent
     private function getCall($call){
+
         //check if we have this call cached
       if  ($response = $this->getCache($call))
           return $response;
